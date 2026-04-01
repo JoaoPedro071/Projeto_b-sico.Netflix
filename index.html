@@ -1,0 +1,80 @@
+<!-- DOCTYPE declara que este é um documento HTML5 -->
+<!DOCTYPE html>
+<!-- html é o elemento raiz da página, lang define o idioma como português brasileiro -->
+<html lang="pt-br">
+<!-- head contém metadados sobre o documento -->
+<head>
+    <!-- meta define o conjunto de caracteres como UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- meta configura a viewport para dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title define o título da página que aparece na aba do navegador -->
+    <title>Netflix</title>
+    <!-- link conecta o arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- body contém o conteúdo visível da página -->
+<body>
+    <!-- header simula a barra superior da Netflix -->
+    <header>
+        <h1>Netflix</h1>
+    </header>
+    <!-- main define o conteúdo principal da página -->
+    <main>
+        <!-- h1 é o cabeçalho principal da página -->
+        <h1>Quem está assistindo?</h1>
+        <!-- ul agrupa a lista de perfis -->
+        <ul class="profiles">
+            <li>
+                <!-- ul lista não ordenada dos perfis -->
+                <ul class="profile-list">
+                    <!-- li representa um item da lista, aqui um perfil -->
+                    <li class="profile">
+                        <a href="catalogo/catalogo.html">
+                            <!-- img exibe uma imagem, src aponta para o arquivo, alt descreve a imagem -->
+                            <img src="./assets/perfil 1.jpg.jpg" alt="Imagem que mostra um homem barbudo sério e de cachecol">
+                            <!-- p define um parágrafo de texto -->
+                            <p>Jotape</p>
+                        </a>
+                    </li>
+                    <li class="profile">
+                        <a href="catalogo/catalogo.html">
+                            <img src="./assets/perfil 2.jpeg.jpeg" alt="Imagem que mostra uma mulher negra de cabelo crespo e branco e de óculos">
+                            <p>Elzi</p>
+                        </a>
+                    </li>
+                    <li class="profile">
+                        <a href="catalogo/catalogo.html">
+                            <img src="./assets/perfil 3.jpg.jpg" alt="Imagem que mostra uma mulher negra de cabelo crespo e branco e de óculos">
+                            <p>Aline</p>
+                        </a>
+                    </li>
+                    <li class="profile">
+                        <a href="catalogo/catalogo.html">
+                            <img src="./assets/perfil 4.jpeg.jpeg" alt="Imagem que mostra uma mulher negra de cabelo crespo e branco e de óculos">
+                            <p>Kids</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- botão para alternar entre Light e Dark mode -->
+        <button id="theme-toggle" aria-label="Alternar tema"></button>
+        <a href="manage-profiles.html" class="browse-link">Gerenciar Perfis</a>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        // Armazenar perfil ativo no localStorage
+        document.querySelectorAll('.profile a').forEach(profileLink => {
+            profileLink.addEventListener('click', function(e) {
+                const profileElement = this.closest('.profile');
+                const profileName = profileElement.querySelector('p').textContent;
+                const profileImageSrc = profileElement.querySelector('img').src;
+                
+                localStorage.setItem('perfilAtivoNome', profileName);
+                localStorage.setItem('perfilAtivoImagem', profileImageSrc);
+            });
+        });
+    </script>
+</body>
+</html>
